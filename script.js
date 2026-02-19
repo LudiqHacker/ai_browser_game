@@ -4,6 +4,9 @@ const ctx = canvas.getContext("2d");
 const scoreEl = document.getElementById("score");
 const livesEl = document.getElementById("lives");
 const startBtn = document.getElementById("startBtn");
+const leftBtn = document.getElementById("left");
+const rightBtn = document.getElementById("right")
+
 
 let player, blocks, score, lives, gameRunning;
 
@@ -35,6 +38,17 @@ document.addEventListener("keydown", e => {
         player.x += player.speed;
     }
 });
+
+leftBtn.addEventListener("click", () => {
+    if (!gameRunning) return;
+    player.x -= player.speed*4;
+});
+
+rightBtn.addEventListener("click", () => {
+    if (!gameRunning) return;
+    player.x += player.speed*4;
+});
+
 
 function spawnBlock() {
     const size = 20 + Math.random()*20;
